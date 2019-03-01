@@ -9,7 +9,7 @@
     - [SWIM: scalable weakly-consistent infection-style process group membership protocol](www.cs.cornell.edu/projects/Quicksilver/public_pdfs/SWIM.pdf)
 
 ## Group Membership Protocol
-* _Failure detection_, once a node has found a failing peer, it communicates it to the rest of the cluster
+* _Failure detection_: once a node has found a failing peer, it communicates it to the rest of the cluster
     * _Prop Completeness:_ each failure is detected
     * _Props Accuracy:_ there is no mistaken detection
     * Both are impossible (if possible, then we could solve dist consensus as well), so we can guarantee completeness, but accuracy only partial/probablistic
@@ -17,7 +17,17 @@
     * Speed: Time to first detection of a failure
     * Scale: Equal load on each member
     * Scale: Network message load
-* _Disemination_, a method to communicate joins, leaves, failures to peer members
+
+    * Suspicion mechanism 
+
+* _Disemination_: a method to communicate joins, leaves, failures to peer members
+    * There are methods which piggy back on failure detection gossip style messages, so add dissemination messages on the ping/ack etc messages of the failure detection
+
+* _Membership Reference_: data structure that keeps known members
+    * All members table
+    * Neightbors
+    * Distributed Hashtables
+    * Finger Tables
 
 ## Failure Detection
 * Ack and Nacks
@@ -28,7 +38,15 @@
     * Nodes periodically gossip their membership list
     * Membership list keeps the time since last communication of all nodes
 
+## Routing
+* _Finger tables_: are hash tables to find resources
+
 ## Clock Sync
 * _NTP Protocol_
+* _Cristians Algorithm_
+* _Lamports Timestamps and Lamport Ordering_: Dont sync time, just respect causality (very important!)
+* _Vector Clocks_: Imrpoves on Lamport's
 
+## Other
 * _Common_: Exponential backoffs for not overloading of any retry opperation (like sending Nacks)
+* _P2P Systems_: Chord, Pastry, Kelips
