@@ -38,6 +38,9 @@
     * Nodes periodically gossip their membership list
     * Membership list keeps the time since last communication of all nodes
 
+## Fault Tolerance
+* _Byzantine fault tolerance_
+
 ## Routing
 * _Finger tables_: are hash tables to find resources
 
