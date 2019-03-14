@@ -1,5 +1,32 @@
 # Distributed Systems Notes
 
+## Resources
+* [Distributed systems for fun and profit](http://book.mixu.net/distsys/)
+
+## Why
+* Desire
+    * _Scalability_
+    * _Availability_
+    * _Performance_
+
+## Axioms
+* _Each node executes a program concurrently_
+* _Knowledge is local_: nodes have fast access only to their local state, and any information about global state is potentially out of date
+* _Nodes can fail and recover from failure independently_
+* _Messages can be delayed or lost_ (independent of node failure; it is not easy to distinguish network failure and node failure)
+* _Clocks are not synchronized_ across nodes (local timestamps do not correspond to the global real time order, which cannot be easily observed)
+
+## Impossibilities
+* _FLP_ can't ensure both safety and liveness
+    * "there does not exist a (deterministic) algorithm for the consensus problem in an asynchronous system subject to failures, even if messages can never be lost, at most one process may fail, and it can only fail by crashing (stopping executing)"
+* _CAP_ can only ensure 2 of 3: Consistency, Availability, Partition Tolerance
+
+## Concensus Algorithms
+* _Popular_
+    * _2PC_ -> Consistency, Availability
+    * _Gossip_ -> Availability, Partition Tolerance
+    * _Paxos_ -> Partition Tolerance, Consistency
+
 ## Gossip Protocol
 * Push vs Pull protocols
     * Push are faster in the beginning O(log(n)) but pull faster on the second half O(log(log(n))), so push-pull protocols are good
